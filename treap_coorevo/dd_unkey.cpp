@@ -94,6 +94,16 @@ pair<node*, int> min(node* tr, int l, int r) {
     return {tr, ans};
 }
 
+node* reverses(node* tr, int l, int r){
+    auto tmp1 = split(tr, l);
+    auto tmp2 = split(tmp1.y, r - l + 2);
+
+    tr = merge(tmp2.x, tmp1.x);
+    tr = merge(tr, tmp2.y);
+
+    return tr;
+}
+
 void out(node* tr){
     for(int i = 0; i < n; i++){
         auto tmp = split(tr, 2);
